@@ -21,9 +21,9 @@ export default function Capa({ index, total }: SlideProps) {
               className="slide-display slide-title-lg"
               style={{ fontWeight: 800, fontSize: 116, lineHeight: 1.02, whiteSpace: "nowrap" }}
             >
-              Avaliação de IHC
+              Avaliação de IHC:
               <br />
-              do <span style={{ color: "var(--slide-red)" }}>Pinterest</span>
+              <span style={{ color: "var(--slide-red)" }}>Pinterest</span>
             </h1>
           </div>
 

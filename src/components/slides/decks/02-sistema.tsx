@@ -1,8 +1,8 @@
 import { SlideLayout, SlideTitle, type SlideProps } from "../SlideLayout";
 
 const concepts = [
-  { term: "Pin", desc: "Imagem ou vídeo salvo, com link para a fonte" },
-  { term: "Pasta (board)", desc: "Coleção temática onde o usuário organiza seus pins" },
+  { term: "Pin", desc: "Imagem ou vídeo salvo na plataforma" },
+  { term: "Board", desc: "Coleção temática onde o usuário organiza seus pins" },
   { term: "Feed", desc: "Ideias recomendadas a partir do que o usuário salva e busca" },
 ];
 
@@ -23,9 +23,9 @@ const reasons = [
 export default function Sistema({ index, total }: SlideProps) {
   return (
     <SlideLayout index={index} total={total} kicker="Sistema avaliado">
-      <div className="flex flex-1 flex-col" style={{ gap: 48 }}>
+      <div className="flex flex-1 flex-col" style={{ gap: 100 }}>
         <SlideTitle>
-          Pinterest: <span style={{ color: "var(--slide-red)" }}>curadoria visual</span> em pastas
+          Pinterest: <span style={{ color: "var(--slide-red)" }}>catalogação</span> em pastas
         </SlideTitle>
 
         <div className="flex flex-1" style={{ gap: 64 }}>
@@ -33,7 +33,7 @@ export default function Sistema({ index, total }: SlideProps) {
           <div className="flex flex-col" style={{ flex: 0.85, gap: 28 }}>
             <div className="flex flex-col" style={{ gap: 16 }}>
               {concepts.map((c) => (
-                <div key={c.term} className="slide-pin flex flex-col" style={{ padding: "24px 32px", gap: 6 }}>
+                <div key={c.term} className="slide-pin flex flex-col" style={{ padding: "32px 32px", gap: 6 }}>
                   <span className="slide-body" style={{ fontWeight: 700 }}>
                     {c.term}
                   </span>
