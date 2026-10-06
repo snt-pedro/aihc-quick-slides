@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState, useCallback } from "react";
 import { ScaledSlide } from "@/components/slides/ScaledSlide";
 import { PdfExportButton } from "@/components/slides/PdfExportButton";
+import { PresenterNotes } from "@/components/slides/PresenterNotes";
 import { slides } from "@/lib/slides";
 import { exportSlidesToPdf } from "@/lib/pdf-exporter";
 
@@ -100,10 +101,14 @@ function SlidePage() {
   const Slide = slide.Component;
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden" style={{ background: "#ffffff" }}>
-      <ScaledSlide>
-        <Slide index={i} total={total} />
-      </ScaledSlide>
+    <div className="relative flex h-screen w-screen flex-col overflow-hidden" style={{ background: "#ffffff" }}>
+      <div className="relative flex-1">
+        <ScaledSlide>
+          <Slide index={i} total={total} />
+        </ScaledSlide>
+      </div>
+
+      <PresenterNotes presenter={slide.presenter} notes={slide.notes} />
 
       {/* Controles de exportação e navegação */}
       <div className="absolute left-6 top-6 flex items-center gap-3 z-50">

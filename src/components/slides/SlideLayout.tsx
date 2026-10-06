@@ -55,7 +55,7 @@ export function SlideLayout({ children, index, total, kicker, bare = false }: Pr
           className="absolute bottom-0 left-0 right-0 flex items-center justify-between"
           style={{ padding: "0 96px 48px 96px", color: "var(--slide-muted)" }}
         >
-          <span className="slide-footer">Avaliação Heurística do Pinterest · Entrega 1</span>
+          <span className="slide-footer">Avaliação Heurística do Pinterest</span>
           <span className="slide-footer">Avaliação de IHC com Apoio de IA · UFC Quixadá</span>
         </div>
       )}

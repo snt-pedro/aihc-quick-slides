@@ -18,11 +18,6 @@ const reasons = [
     title: "Hipóteses já levantadas",
     desc: "Consistência, estética minimalista e controle do usuário foram as heurísticas mais citadas nos reviews",
   },
-  {
-    big: "UX",
-    title: "Produto-cliente do squad",
-    desc: "A inspeção alimenta a etapa Descobrir do redesign do Pinterest na disciplina de UX",
-  },
 ];
 
 export default function Sistema({ index, total }: SlideProps) {
@@ -36,10 +31,6 @@ export default function Sistema({ index, total }: SlideProps) {
         <div className="flex flex-1" style={{ gap: 64 }}>
           {/* o que é */}
           <div className="flex flex-col" style={{ flex: 0.85, gap: 28 }}>
-            <span className="slide-body" style={{ color: "#444" }}>
-              Rede de descoberta de ideias com mais de 500 milhões de usuários por mês. Avaliamos o{" "}
-              <b style={{ color: "var(--slide-fg)" }}>app Android</b>, com conta logada.
-            </span>
             <div className="flex flex-col" style={{ gap: 16 }}>
               {concepts.map((c) => (
                 <div key={c.term} className="slide-pin flex flex-col" style={{ padding: "24px 32px", gap: 6 }}>
