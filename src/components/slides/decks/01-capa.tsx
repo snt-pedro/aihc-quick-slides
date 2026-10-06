@@ -6,7 +6,7 @@ const team: { name: string; id?: string }[] = [
 ];
 
 // Deslocamento horizontal da logo em px do slide: negativo = esquerda, positivo = direita.
-const LOGO_OFFSET_X = 0;
+const LOGO_OFFSET_X = -200;
 
 export default function Capa({ index, total }: SlideProps) {
   return (

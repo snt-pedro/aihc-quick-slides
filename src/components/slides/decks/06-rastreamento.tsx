@@ -7,31 +7,31 @@ const decisaoStyle: Record<Decisao, { background: string; color: string }> = {
   Descartado: { background: "var(--slide-soft)", color: "var(--slide-muted)" },
 };
 
-const cell = { fontSize: 24, padding: "20px 22px" } as const;
+const cell = { fontSize: 20, lineHeight: 1.3, padding: "12px 18px" } as const;
 
 export default function Rastreamento({ index, total }: SlideProps) {
   return (
     <SlideLayout index={index} total={total} kicker="Tabela de rastreamento">
-      <div className="flex flex-1 flex-col" style={{ gap: 36 }}>
+      <div className="flex flex-1 flex-col" style={{ gap: 24 }}>
         <SlideTitle>Log de prompts</SlideTitle>
 
         <table className="slide-table" style={{ tableLayout: "fixed" }}>
           <colgroup>
             <col style={{ width: 80 }} />
             <col style={{ width: 210 }} />
-            <col style={{ width: 520 }} />
+            <col style={{ width: 480 }} />
             <col />
-            <col style={{ width: 200 }} />
+            <col style={{ width: 250 }} />
             <col style={{ width: 130 }} />
           </colgroup>
           <thead>
             <tr>
-              <th style={{ padding: "0 22px 16px" }}>#</th>
-              <th style={{ padding: "0 22px 16px" }}>Etapa</th>
-              <th style={{ padding: "0 22px 16px" }}>Prompt / ferramenta</th>
-              <th style={{ padding: "0 22px 16px" }}>Resposta da IA (resumo)</th>
-              <th style={{ padding: "0 22px 16px" }}>Decisão</th>
-              <th style={{ padding: "0 22px 16px" }}>Iterações</th>
+              <th style={{ padding: "0 18px 12px" }}>#</th>
+              <th style={{ padding: "0 18px 12px" }}>Etapa</th>
+              <th style={{ padding: "0 18px 12px" }}>Prompt / ferramenta</th>
+              <th style={{ padding: "0 18px 12px" }}>Resposta da IA (resumo)</th>
+              <th style={{ padding: "0 18px 12px" }}>Decisão</th>
+              <th style={{ padding: "0 18px 12px" }}>Iterações</th>
             </tr>
           </thead>
           <tbody>
@@ -40,9 +40,9 @@ export default function Rastreamento({ index, total }: SlideProps) {
                 <td style={{ ...cell, fontWeight: 700, color: "var(--slide-red)" }}>{r.id}</td>
                 <td style={{ ...cell, fontWeight: 600 }}>{r.etapa}</td>
                 <td style={cell}>
-                  <div className="flex flex-col" style={{ gap: 6 }}>
+                  <div className="flex flex-col" style={{ gap: 2 }}>
                     <span>{r.prompt}</span>
-                    <span style={{ fontSize: 20, color: "var(--slide-muted)" }}>
+                    <span style={{ fontSize: 17, color: "var(--slide-muted)" }}>
                       {r.ferramenta ?? <Todo>ferramenta</Todo>}
                     </span>
                   </div>
@@ -53,11 +53,11 @@ export default function Rastreamento({ index, total }: SlideProps) {
                     <div className="flex flex-col" style={{ gap: 6 }}>
                       <span
                         className="slide-chip"
-                        style={{ ...decisaoStyle[r.decisao], fontSize: 20, padding: "10px 18px", alignSelf: "flex-start" }}
+                        style={{ ...decisaoStyle[r.decisao], fontSize: 17, padding: "6px 14px", alignSelf: "flex-start" }}
                       >
                         {r.decisao}
                       </span>
-                      {r.porque && <span style={{ fontSize: 18, color: "#444" }}>{r.porque}</span>}
+                      {r.porque && <span style={{ fontSize: 16, color: "#444" }}>{r.porque}</span>}
                     </div>
                   ) : (
                     <Todo>squad</Todo>
@@ -70,11 +70,6 @@ export default function Rastreamento({ index, total }: SlideProps) {
             ))}
           </tbody>
         </table>
-
-        <span className="slide-caption" style={{ color: "var(--slide-muted)", marginTop: "auto", fontSize: 22 }}>
-          Texto integral dos prompts e respostas no repositório (pasta prompts/); a tabela segue
-          crescendo nas próximas etapas e vira o apêndice do artigo.
-        </span>
       </div>
     </SlideLayout>
   );

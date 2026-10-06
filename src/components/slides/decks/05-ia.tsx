@@ -1,4 +1,4 @@
-import { SlideLayout, SlideTitle, Todo, type SlideProps } from "../SlideLayout";
+import { SlideLayout, SlideTitle, type SlideProps } from "../SlideLayout";
 
 const uses = [
   {
@@ -94,10 +94,12 @@ export default function Ia({ index, total }: SlideProps) {
             </div>
             <div className="flex flex-col" style={{ gap: 6, marginTop: 8 }}>
               <span className="slide-kicker" style={{ color: "var(--slide-red)" }}>
-                Na prática
+                Na prática · desk research
               </span>
-              <span className="slide-caption">
-                <Todo>exemplo real de erro ou acerto da IA nos prompts P1–P3</Todo>
+              <span className="slide-caption" style={{ fontSize: 22 }}>
+                Um review relatava 3 problemas: anúncios na busca, filtro de IA que não funciona e{" "}
+                <b>erro ao renomear pastas</b>. A classificação registrou só os anúncios; uma releitura
+                dos comentários completos achou o erro e levou Pastas para o escopo.
               </span>
             </div>
           </div>
