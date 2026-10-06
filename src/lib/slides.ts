@@ -1,4 +1,5 @@
 import Capa from "@/components/slides/decks/01-capa";
+import Historia from "@/components/slides/decks/01b-historia";
 import Sistema from "@/components/slides/decks/02-sistema";
 import Metodo from "@/components/slides/decks/03-metodo";
 import Escopo from "@/components/slides/decks/04-escopo";
@@ -8,6 +9,7 @@ import Encerramento from "@/components/slides/decks/07-encerramento";
 
 export const slides = [
   { title: "Capa", Component: Capa },
+  { title: "A história do Pinterest", Component: Historia },
   { title: "Sistema avaliado", Component: Sistema },
   { title: "Método de avaliação", Component: Metodo },
   { title: "Escopo da inspeção", Component: Escopo },

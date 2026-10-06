@@ -18,12 +18,13 @@ Abra `http://localhost:8080/slides/1` (a porta pode variar). Atalhos: ← → na
 | # | Slide | Arquivo | Responsável |
 |---|---|---|---|
 | 1 | Capa e equipe | `src/components/slides/decks/01-capa.tsx` | Francisco Jardel Silva Magalhães |
-| 2 | Sistema avaliado | `02-sistema.tsx` | Francisco Jardel Silva Magalhães |
-| 3 | Método de avaliação | `03-metodo.tsx` | _definir_ |
-| 4 | Escopo da inspeção | `04-escopo.tsx` | _definir_ |
-| 5 | O apoio da IA no planejamento | `05-ia.tsx` | _definir_ |
-| 6 | Tabela de rastreamento | `06-rastreamento.tsx` | _definir_ |
-| 7 | Obrigado | `07-encerramento.tsx` | — |
+| 2 | A história do Pinterest | `01b-historia.tsx` | _definir_ |
+| 3 | Sistema avaliado | `02-sistema.tsx` | Francisco Jardel Silva Magalhães |
+| 4 | Método de avaliação | `03-metodo.tsx` | _definir_ |
+| 5 | Escopo da inspeção | `04-escopo.tsx` | _definir_ |
+| 6 | O apoio da IA no planejamento | `05-ia.tsx` | _definir_ |
+| 7 | Tabela de rastreamento | `06-rastreamento.tsx` | _definir_ |
+| 8 | Obrigado | `07-encerramento.tsx` | — |
 
 Trechos em amarelo nos slides (componente `Todo`) são pendências do squad.
 
