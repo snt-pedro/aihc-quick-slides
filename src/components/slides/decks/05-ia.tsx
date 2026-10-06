@@ -61,15 +61,12 @@ export default function Ia({ index, total }: SlideProps) {
     <SlideLayout index={index} total={total} kicker="O apoio da IA no planejamento">
       <div className="flex flex-1 flex-col" style={{ gap: LAYOUT.titleGap }}>
         <SlideTitle>
-          A IA <span style={{ color: "var(--slide-red)" }}>rascunha</span>, o squad decide
+          Onde a <span style={{ color: "var(--slide-red)" }}>IA</span> entra/entrou
         </SlideTitle>
 
         <div className="flex flex-1" style={{ gap: LAYOUT.columnsGap }}>
           {/* onde entra */}
           <div className="flex flex-col" style={{ flex: LAYOUT.leftColumn, gap: LAYOUT.usesGap }}>
-            <span className="slide-kicker" style={{ color: "var(--slide-muted)" }}>
-              Onde a IA entrou
-            </span>
             {uses.map((u) => (
               <div
                 key={u.id}
@@ -82,9 +79,6 @@ export default function Ia({ index, total }: SlideProps) {
                 <div className="flex flex-col" style={{ gap: 6 }}>
                   <span className="slide-body" style={{ fontWeight: 700 }}>
                     {u.what}: <span style={{ fontWeight: 500 }}>{u.ai}</span>
-                  </span>
-                  <span className="slide-caption" style={{ color: "#444" }}>
-                    → {u.human}
                   </span>
                 </div>
               </div>

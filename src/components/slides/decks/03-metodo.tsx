@@ -35,7 +35,7 @@ const LAYOUT = {
    * Altura de cada linha de cartões das heurísticas.
    * null = as duas linhas esticam até o rodapé; um número fixa a altura (ex.: 90).
    */
-  heuristicRowHeight: null as number | null,
+  heuristicRowHeight: 120 as number | null,
   /** Espaço interno dos cartões das heurísticas. */
   heuristicPadding: "12px 24px",
   /** Espaço entre os cartões das heurísticas. */

@@ -22,7 +22,7 @@ export const slides = [
   {
     title: "A história do Pinterest",
     Component: Historia,
-    presenter: "",
+    presenter: "Jardel",
     notes:
       "Nasceu do Tote, app de compras de 2009. Virou Pinterest em março de 2010 e chegou a 10 mil usuários em 9 meses. Hoje é empresa aberta (NYSE: PINS) com mais de 500 milhões de usuários por mês. Citar os fundadores: Ben Silbermann, Paul Sciarra e Evan Sharp.",
   },
@@ -36,7 +36,7 @@ export const slides = [
   {
     title: "Método de avaliação",
     Component: Metodo,
-    presenter: "",
+    presenter: "Pedro",
     notes:
       "Avaliação heurística: inspeção por especialistas com as 10 heurísticas de Nielsen, sem usuários. Por quê: 5 integrantes viram 5 avaliadores independentes, é barata e complementa o teste com usuários do projeto de UX. Hoje entregamos a Preparação; coleta a relato ficam para a Entrega 2.",
   },
