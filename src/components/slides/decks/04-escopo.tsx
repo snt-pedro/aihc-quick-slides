@@ -41,22 +41,45 @@ const areas = [
   },
 ];
 
+// Ajustes de layout (px do slide 1920×1080).
+const LAYOUT = {
+  /** Distância entre o título e os cartões: maior = cartões mais para baixo. */
+  titleGap: 86,
+  /** Altura dos cartões das áreas. */
+  cardHeight: 560,
+  /** Espaço horizontal entre os cartões. */
+  cardsGap: 24,
+  /** Espaço interno dos cartões (topo, laterais, base). */
+  cardPadding: "36px 36px 32px",
+  /** Espaço vertical entre os itens de cada cartão. */
+  cardInnerGap: 18,
+  /** Tamanho do número (1–4) e do nome da área. */
+  numberSize: 56,
+  nameSize: 40,
+  /** Tamanho das citações dos reviews. */
+  quoteSize: 21,
+};
+
 export default function Escopo({ index, total }: SlideProps) {
   return (
     <SlideLayout index={index} total={total} kicker="Escopo da inspeção">
-      <div className="flex flex-1 flex-col" style={{ gap: 86 }}>
+      <div className="flex flex-1 flex-col" style={{ gap: LAYOUT.titleGap }}>
         <SlideTitle>Quatro áreas-alvo</SlideTitle>
 
-        <div className="grid grid-cols-4" style={{ gap: 24, height: 560 }}>
+        <div className="grid grid-cols-4" style={{ gap: LAYOUT.cardsGap, height: LAYOUT.cardHeight }}>
           {areas.map((a) => (
-            <div key={a.name} className="slide-pin flex flex-col" style={{ padding: "36px 36px 32px", gap: 18 }}>
+            <div
+              key={a.name}
+              className="slide-pin flex flex-col"
+              style={{ padding: LAYOUT.cardPadding, gap: LAYOUT.cardInnerGap }}
+            >
               <span
                 className="slide-display slide-num"
-                style={{ fontSize: 56, fontWeight: 800, lineHeight: 1, color: "var(--slide-red)" }}
+                style={{ fontSize: LAYOUT.numberSize, fontWeight: 800, lineHeight: 1, color: "var(--slide-red)" }}
               >
                 {a.n}
               </span>
-              <span className="slide-subtitle" style={{ fontWeight: 700, fontSize: 40 }}>
+              <span className="slide-subtitle" style={{ fontWeight: 700, fontSize: LAYOUT.nameSize }}>
                 {a.name}
               </span>
               <span className="slide-caption" style={{ color: "#444" }}>
@@ -64,7 +87,7 @@ export default function Escopo({ index, total }: SlideProps) {
               </span>
               <div className="flex flex-col" style={{ gap: 10, marginTop: "auto" }}>
                 {a.evidence.map((q) => (
-                  <span key={q} className="slide-caption" style={{ fontStyle: "italic", fontSize: 21, color: "var(--slide-fg)" }}>
+                  <span key={q} className="slide-caption" style={{ fontStyle: "italic", fontSize: LAYOUT.quoteSize, color: "var(--slide-fg)" }}>
                     {q}
                   </span>
                 ))}

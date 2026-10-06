@@ -1,25 +1,42 @@
 import { SlideLayout, Todo, type SlideProps } from "../SlideLayout";
 
+// Ajustes de layout (px do slide 1920×1080).
+const LAYOUT = {
+  /** Tamanho da fonte do título. */
+  titleSize: 116,
+  /** Espaço entre o subtítulo pequeno e o título. */
+  titleGap: 36,
+  /** Recuo do bloco de texto a partir do topo. */
+  textTop: 20,
+  /** Espaço entre a coluna de texto e a da logo. */
+  columnsGap: 80,
+  /** Largura relativa da coluna da logo (a de texto vale 1). */
+  logoColumn: 0.45,
+  /** Tamanho máximo da logo. */
+  logoSize: 1260,
+  /** Deslocamento horizontal da logo: negativo = esquerda, positivo = direita. */
+  logoOffsetX: -200,
+  /** Deslocamento vertical da logo: negativo = sobe, positivo = desce. */
+  logoOffsetY: 0,
+};
+
 // Preencher nome completo e matrícula de cada integrante.
 const team: { name: string; id?: string }[] = [
   { name: "Jardel, Pedro, Avelino, Júlio e Luis", id: "" },
 ];
 
-// Deslocamento horizontal da logo em px do slide: negativo = esquerda, positivo = direita.
-const LOGO_OFFSET_X = -200;
-
 export default function Capa({ index, total }: SlideProps) {
   return (
     <SlideLayout index={index} total={total} bare>
-      <div className="flex flex-1 items-stretch justify-between" style={{ gap: 80 }}>
-        <div className="flex flex-1 flex-col justify-between" style={{ paddingTop: 20 }}>
-          <div className="flex flex-col" style={{ gap: 36 }}>
+      <div className="flex flex-1 items-stretch justify-between" style={{ gap: LAYOUT.columnsGap }}>
+        <div className="flex flex-1 flex-col justify-between" style={{ paddingTop: LAYOUT.textTop }}>
+          <div className="flex flex-col" style={{ gap: LAYOUT.titleGap }}>
             <span className="slide-kicker" style={{ color: "var(--slide-muted)" }}>
               Avaliação de IHC com apoio de IA
             </span>
             <h1
               className="slide-display slide-title-lg"
-              style={{ fontWeight: 800, fontSize: 116, lineHeight: 1.02, whiteSpace: "nowrap" }}
+              style={{ fontWeight: 800, fontSize: LAYOUT.titleSize, lineHeight: 1.02, whiteSpace: "nowrap" }}
             >
               Avaliação de IHC:
               <br />
@@ -44,12 +61,15 @@ export default function Capa({ index, total }: SlideProps) {
           </div>
         </div>
 
-        <div className="flex items-center justify-center" style={{ flex: 0.45 }}>
-          <img src="/pinterest.png" alt="Pinterest" style={{
-              maxWidth: 1260,
-              maxHeight: 1260,
+        <div className="flex items-center justify-center" style={{ flex: LAYOUT.logoColumn }}>
+          <img
+            src="/pinterest.png"
+            alt="Pinterest"
+            style={{
+              maxWidth: LAYOUT.logoSize,
+              maxHeight: LAYOUT.logoSize,
               objectFit: "contain",
-              transform: `translateX(${LOGO_OFFSET_X}px)`,
+              transform: `translate(${LAYOUT.logoOffsetX}px, ${LAYOUT.logoOffsetY}px)`,
             }}
           />
         </div>

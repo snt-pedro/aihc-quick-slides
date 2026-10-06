@@ -23,10 +23,30 @@ const heuristics = [
   { id: "H10", name: "Ajuda e documentação" },
 ];
 
+// Ajustes de layout (px do slide 1920×1080).
+const LAYOUT = {
+  /** Espaço vertical entre título, atividades e heurísticas. */
+  sectionsGap: 32,
+  /** Espaço interno dos cartões das atividades. */
+  stepPadding: "22px 26px",
+  /** Tamanho do número (1–5) das atividades. */
+  stepNumberSize: 40,
+  /**
+   * Altura de cada linha de cartões das heurísticas.
+   * null = as duas linhas esticam até o rodapé; um número fixa a altura (ex.: 90).
+   */
+  heuristicRowHeight: null as number | null,
+  /** Espaço interno dos cartões das heurísticas. */
+  heuristicPadding: "12px 24px",
+  /** Espaço entre os cartões das heurísticas. */
+  heuristicsGap: 14,
+};
+
 export default function Metodo({ index, total }: SlideProps) {
+  const fixedRows = LAYOUT.heuristicRowHeight !== null;
   return (
     <SlideLayout index={index} total={total} kicker="Método de avaliação">
-      <div className="flex flex-1 flex-col" style={{ gap: 32 }}>
+      <div className="flex flex-1 flex-col" style={{ gap: LAYOUT.sectionsGap }}>
         <div className="flex flex-col" style={{ gap: 16 }}>
           <SlideTitle>Avaliação heurística</SlideTitle>
           <span className="slide-body-lg" style={{ color: "#444" }}>
@@ -46,7 +66,7 @@ export default function Metodo({ index, total }: SlideProps) {
                 <div
                   className="flex flex-1 flex-col"
                   style={{
-                    padding: "22px 26px",
+                    padding: LAYOUT.stepPadding,
                     gap: 6,
                     borderRadius: 28,
                     background: s.now ? "var(--slide-red-soft)" : "transparent",
@@ -57,7 +77,7 @@ export default function Metodo({ index, total }: SlideProps) {
                     <span
                       className="slide-display slide-num"
                       style={{
-                        fontSize: 40,
+                        fontSize: LAYOUT.stepNumberSize,
                         fontWeight: 800,
                         lineHeight: 1,
                         color: s.now ? "var(--slide-red)" : "var(--slide-line)",
@@ -93,16 +113,22 @@ export default function Metodo({ index, total }: SlideProps) {
         </div>
 
         {/* heurísticas */}
-        <div className="flex flex-1 flex-col" style={{ gap: 18 }}>
+        <div className={fixedRows ? "flex flex-col" : "flex flex-1 flex-col"} style={{ gap: 18 }}>
           <span className="slide-kicker" style={{ color: "var(--slide-muted)" }}>
             As 10 heurísticas de Nielsen
           </span>
-          <div className="grid flex-1 grid-cols-5 grid-rows-2" style={{ gap: 14 }}>
+          <div
+            className={fixedRows ? "grid grid-cols-5" : "grid flex-1 grid-cols-5 grid-rows-2"}
+            style={{
+              gap: LAYOUT.heuristicsGap,
+              gridTemplateRows: fixedRows ? `repeat(2, ${LAYOUT.heuristicRowHeight}px)` : undefined,
+            }}
+          >
             {heuristics.map((h) => (
               <div
                 key={h.id}
                 className="slide-pin flex flex-col justify-center"
-                style={{ padding: "12px 24px", gap: 2 }}
+                style={{ padding: LAYOUT.heuristicPadding, gap: 2 }}
               >
                 <span className="slide-num" style={{ fontSize: 22, fontWeight: 800, color: "var(--slide-red)" }}>
                   {h.id}

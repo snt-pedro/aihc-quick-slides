@@ -7,22 +7,34 @@ const decisaoStyle: Record<Decisao, { background: string; color: string }> = {
   Descartado: { background: "var(--slide-soft)", color: "var(--slide-muted)" },
 };
 
-const cell = { fontSize: 20, lineHeight: 1.3, padding: "12px 18px" } as const;
+// Ajustes de layout (px do slide 1920×1080).
+const LAYOUT = {
+  /** Distância entre o título e a tabela. */
+  titleGap: 24,
+  /** Fonte e espaço interno das células: menor = linhas mais baixas. */
+  cellFontSize: 20,
+  cellPadding: "12px 18px",
+  /** Largura das colunas; a de "Resposta da IA" ocupa o que sobrar. */
+  colWidths: { id: 80, etapa: 210, prompt: 480, decisao: 250, iteracoes: 130 },
+};
+
+const cell = { fontSize: LAYOUT.cellFontSize, lineHeight: 1.3, padding: LAYOUT.cellPadding } as const;
 
 export default function Rastreamento({ index, total }: SlideProps) {
+  const w = LAYOUT.colWidths;
   return (
     <SlideLayout index={index} total={total} kicker="Tabela de rastreamento">
-      <div className="flex flex-1 flex-col" style={{ gap: 24 }}>
+      <div className="flex flex-1 flex-col" style={{ gap: LAYOUT.titleGap }}>
         <SlideTitle>Log de prompts</SlideTitle>
 
         <table className="slide-table" style={{ tableLayout: "fixed" }}>
           <colgroup>
-            <col style={{ width: 80 }} />
-            <col style={{ width: 210 }} />
-            <col style={{ width: 480 }} />
+            <col style={{ width: w.id }} />
+            <col style={{ width: w.etapa }} />
+            <col style={{ width: w.prompt }} />
             <col />
-            <col style={{ width: 250 }} />
-            <col style={{ width: 130 }} />
+            <col style={{ width: w.decisao }} />
+            <col style={{ width: w.iteracoes }} />
           </colgroup>
           <thead>
             <tr>

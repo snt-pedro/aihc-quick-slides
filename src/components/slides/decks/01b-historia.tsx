@@ -13,23 +13,35 @@ const founders = [
   { name: "Evan Sharp", initials: "ES", photo: "/founders/evan-sharp.webp", position: "30% 0%", zoom: 1.6 },
 ];
 
-const PHOTO_SIZE = 400;
+// Ajustes de layout (px do slide 1920×1080).
+const LAYOUT = {
+  /** Espaço entre a linha do tempo e as fotos. */
+  sectionsGap: 56,
+  /** Espaço interno dos cartões da linha do tempo (vertical, horizontal). */
+  stagePadding: "40px 48px",
+  /** Tamanho do nome em cada cartão da linha do tempo. */
+  stageNameSize: 64,
+  /** Diâmetro das fotos dos fundadores. */
+  photoSize: 400,
+  /** Espaço horizontal entre as fotos. */
+  photosGap: 120,
+};
 
 export default function Historia({ index, total }: SlideProps) {
   return (
     <SlideLayout index={index} total={total} kicker="A história do Pinterest">
-      <div className="flex flex-1 flex-col" style={{ gap: 56 }}>
+      <div className="flex flex-1 flex-col" style={{ gap: LAYOUT.sectionsGap }}>
         <div className="flex items-stretch" style={{ gap: 20 }}>
           {stages.map((s, i) => (
             <Fragment key={s.name}>
-              <div className="slide-pin flex flex-1 flex-col" style={{ padding: "40px 48px", gap: 14 }}>
+              <div className="slide-pin flex flex-1 flex-col" style={{ padding: LAYOUT.stagePadding, gap: 14 }}>
                 <span className="slide-kicker" style={{ color: "var(--slide-muted)" }}>
                   {s.when}
                 </span>
                 <span
                   className="slide-display"
                   style={{
-                    fontSize: 64,
+                    fontSize: LAYOUT.stageNameSize,
                     lineHeight: 1,
                     fontWeight: 800,
                     letterSpacing: "-0.035em",
@@ -55,14 +67,14 @@ export default function Historia({ index, total }: SlideProps) {
           ))}
         </div>
 
-        <div className="flex flex-1 items-center justify-center" style={{ gap: 120 }}>
+        <div className="flex flex-1 items-center justify-center" style={{ gap: LAYOUT.photosGap }}>
           {founders.map((f) => (
             <div key={f.name} className="flex flex-col items-center" style={{ gap: 24 }}>
               <div
                 className="relative flex items-center justify-center overflow-hidden"
                 style={{
-                  width: PHOTO_SIZE,
-                  height: PHOTO_SIZE,
+                  width: LAYOUT.photoSize,
+                  height: LAYOUT.photoSize,
                   borderRadius: 999,
                   background: "var(--slide-soft)",
                 }}

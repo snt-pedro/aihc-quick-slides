@@ -40,17 +40,33 @@ const limits = [
   },
 ];
 
+// Ajustes de layout (px do slide 1920×1080).
+const LAYOUT = {
+  /** Distância entre o título e as colunas: maior = colunas mais para baixo. */
+  titleGap: 40,
+  /** Espaço entre as duas colunas. */
+  columnsGap: 56,
+  /** Largura relativa da coluna da esquerda (a da direita vale 1). */
+  leftColumn: 1.15,
+  /** Espaço interno e entre os cartões P1–P3. */
+  usePadding: "26px 32px",
+  usesGap: 18,
+  /** Espaço interno e entre os cartões de limites. */
+  limitPadding: "24px 28px",
+  limitsGap: 16,
+};
+
 export default function Ia({ index, total }: SlideProps) {
   return (
     <SlideLayout index={index} total={total} kicker="O apoio da IA no planejamento">
-      <div className="flex flex-1 flex-col" style={{ gap: 40 }}>
+      <div className="flex flex-1 flex-col" style={{ gap: LAYOUT.titleGap }}>
         <SlideTitle>
           A IA <span style={{ color: "var(--slide-red)" }}>rascunha</span>, o squad decide
         </SlideTitle>
 
-        <div className="flex flex-1" style={{ gap: 56 }}>
+        <div className="flex flex-1" style={{ gap: LAYOUT.columnsGap }}>
           {/* onde entra */}
-          <div className="flex flex-col" style={{ flex: 1.15, gap: 18 }}>
+          <div className="flex flex-col" style={{ flex: LAYOUT.leftColumn, gap: LAYOUT.usesGap }}>
             <span className="slide-kicker" style={{ color: "var(--slide-muted)" }}>
               Onde a IA entrou
             </span>
@@ -58,7 +74,7 @@ export default function Ia({ index, total }: SlideProps) {
               <div
                 key={u.id}
                 className="slide-pin grid items-center"
-                style={{ gridTemplateColumns: "96px 1fr", padding: "26px 32px", gap: 24 }}
+                style={{ gridTemplateColumns: "96px 1fr", padding: LAYOUT.usePadding, gap: 24 }}
               >
                 <span className="slide-chip slide-chip-red" style={{ textAlign: "center", padding: "14px 0" }}>
                   {u.id}
@@ -80,9 +96,9 @@ export default function Ia({ index, total }: SlideProps) {
             <span className="slide-kicker" style={{ color: "var(--slide-muted)" }}>
               Limites que vigiamos
             </span>
-            <div className="grid grid-cols-2" style={{ gap: 16 }}>
+            <div className="grid grid-cols-2" style={{ gap: LAYOUT.limitsGap }}>
               {limits.map((l) => (
-                <div key={l.t} className="slide-pin-outline flex flex-col" style={{ padding: "24px 28px", gap: 6 }}>
+                <div key={l.t} className="slide-pin-outline flex flex-col" style={{ padding: LAYOUT.limitPadding, gap: 6 }}>
                   <span className="slide-body" style={{ fontWeight: 700 }}>
                     {l.t}
                   </span>

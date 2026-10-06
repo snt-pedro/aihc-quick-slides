@@ -20,20 +20,40 @@ const reasons = [
   },
 ];
 
+// Ajustes de layout (px do slide 1920×1080).
+const LAYOUT = {
+  /** Distância entre o título e as colunas: maior = colunas mais para baixo. */
+  titleGap: 100,
+  /** Deslocamento extra das colunas: negativo = sobe, positivo = desce. */
+  columnsOffsetY: 0,
+  /** Espaço entre as duas colunas. */
+  columnsGap: 64,
+  /** Largura relativa da coluna da esquerda (a da direita vale 1). */
+  leftColumn: 0.85,
+  /** Espaço interno dos cartões Pin / Board / Feed. */
+  conceptPadding: "32px 32px",
+  /** Espaço vertical entre os cartões Pin / Board / Feed. */
+  conceptsGap: 16,
+  /** Espaço interno dos cartões "Por que o Pinterest". */
+  reasonPadding: "26px 36px",
+  /** Espaço vertical entre os cartões "Por que o Pinterest". */
+  reasonsGap: 20,
+};
+
 export default function Sistema({ index, total }: SlideProps) {
   return (
     <SlideLayout index={index} total={total} kicker="Sistema avaliado">
-      <div className="flex flex-1 flex-col" style={{ gap: 100 }}>
+      <div className="flex flex-1 flex-col" style={{ gap: LAYOUT.titleGap }}>
         <SlideTitle>
           Pinterest: <span style={{ color: "var(--slide-red)" }}>catalogação</span> em pastas
         </SlideTitle>
 
-        <div className="flex flex-1" style={{ gap: 64 }}>
+        <div className="flex flex-1" style={{ gap: LAYOUT.columnsGap, marginTop: LAYOUT.columnsOffsetY }}>
           {/* o que é */}
-          <div className="flex flex-col" style={{ flex: 0.85, gap: 28 }}>
-            <div className="flex flex-col" style={{ gap: 16 }}>
+          <div className="flex flex-col" style={{ flex: LAYOUT.leftColumn, gap: 28 }}>
+            <div className="flex flex-col" style={{ gap: LAYOUT.conceptsGap }}>
               {concepts.map((c) => (
-                <div key={c.term} className="slide-pin flex flex-col" style={{ padding: "32px 32px", gap: 6 }}>
+                <div key={c.term} className="slide-pin flex flex-col" style={{ padding: LAYOUT.conceptPadding, gap: 6 }}>
                   <span className="slide-body" style={{ fontWeight: 700 }}>
                     {c.term}
                   </span>
@@ -46,7 +66,7 @@ export default function Sistema({ index, total }: SlideProps) {
           </div>
 
           {/* por que */}
-          <div className="flex flex-col" style={{ flex: 1, gap: 20 }}>
+          <div className="flex flex-col" style={{ flex: 1, gap: LAYOUT.reasonsGap }}>
             <span className="slide-kicker" style={{ color: "var(--slide-muted)" }}>
               Por que o Pinterest
             </span>
@@ -54,7 +74,7 @@ export default function Sistema({ index, total }: SlideProps) {
               <div
                 key={r.title}
                 className="slide-pin-outline grid items-center"
-                style={{ gridTemplateColumns: "260px 1fr", padding: "26px 36px", gap: 32 }}
+                style={{ gridTemplateColumns: "260px 1fr", padding: LAYOUT.reasonPadding, gap: 32 }}
               >
                 <span
                   className="slide-display slide-num"
