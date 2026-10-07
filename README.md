@@ -25,6 +25,10 @@ Abra o endereço que aparece no terminal (`http://localhost:8080`).
 
 Fora da tela cheia, o rodapé mostra quem apresenta o slide e o que falar. Ele não aparece no PDF.
 
+O cronômetro do cabeçalho tem duração e tempo extra configuráveis em `TIMER`, no topo de
+`src/components/slides/CountdownTimer.tsx`. Quando o tempo acaba, ele conta negativo com uma chama
+acesa até o limite extra e, depois disso, fica parado piscando.
+
 ### Exportar PDF sem URL nem data nas páginas
 
 Ao apertar **P**, abre a janela de impressão do navegador. No Chrome/Edge, abra **Mais definições** e:

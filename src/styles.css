@@ -336,3 +336,123 @@
 .slide-table tr.is-hl + tr td {
   border-top-color: transparent;
 }
+
+/* ===== Cronômetro: tempo extra pegando fogo ===== */
+.timer-fire {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 8px;
+  font-weight: 800;
+}
+
+/* Número com as cores do fogo subindo */
+.timer-fire-text {
+  background-image: linear-gradient(
+    to top,
+    var(--slide-red) 0%,
+    #ff4d00 30%,
+    #ffb000 50%,
+    #ff4d00 70%,
+    var(--slide-red) 100%
+  );
+  background-size: 100% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 3px rgba(255, 77, 0, 0.55));
+  animation:
+    timer-fire-rise 1.4s linear infinite,
+    timer-fire-glow 0.9s ease-in-out infinite alternate;
+}
+
+/* Chama: três línguas em gota (vermelha, laranja, amarela) tremulando em ritmos diferentes.
+   --heat (0 → 1) vem do componente e faz a chama crescer até o limite do tempo extra. */
+.timer-flame {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 24px;
+  transform: scale(calc(0.8 + var(--heat, 0) * 0.6));
+  transform-origin: 50% 100%;
+}
+.timer-flame > span {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  /* gota com a ponta para cima; a rotação fica aqui para valer mesmo sem animação */
+  border-radius: 50% 0 50% 50%;
+  transform: rotate(-45deg);
+  transform-origin: 50% 50%;
+  animation: timer-flame-flicker 0.5s ease-in-out infinite alternate;
+}
+.timer-flame > span:nth-child(1) {
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  background: radial-gradient(circle at 60% 40%, #ff4d00, var(--slide-red) 70%);
+  filter: blur(0.4px) drop-shadow(0 0 4px rgba(255, 77, 0, 0.7));
+}
+.timer-flame > span:nth-child(2) {
+  width: 11px;
+  height: 11px;
+  margin-left: -5.5px;
+  background: radial-gradient(circle at 60% 40%, #ffb000, #ff4d00 75%);
+  animation-duration: 0.37s;
+  animation-delay: -0.15s;
+}
+.timer-flame > span:nth-child(3) {
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  background: #fff1a8;
+  animation-duration: 0.29s;
+  animation-delay: -0.07s;
+}
+
+@keyframes timer-flame-flicker {
+  0% {
+    transform: rotate(-45deg) scale(1, 1);
+  }
+  50% {
+    transform: rotate(-40deg) scale(1.08, 0.94) translate(0.5px, -0.5px);
+  }
+  100% {
+    transform: rotate(-50deg) scale(0.94, 1.1) translate(-0.5px, -1px);
+  }
+}
+@keyframes timer-fire-rise {
+  from {
+    background-position: 0% 100%;
+  }
+  to {
+    background-position: 0% 0%;
+  }
+}
+@keyframes timer-fire-glow {
+  from {
+    filter: drop-shadow(0 0 2px rgba(255, 77, 0, 0.4));
+  }
+  to {
+    filter: drop-shadow(0 0 6px rgba(255, 140, 0, 0.75));
+  }
+}
+
+/* Limite do tempo extra estourado: parado e piscando */
+.timer-over {
+  color: var(--slide-red);
+  font-weight: 800;
+  animation: timer-over-blink 1s steps(2, jump-none) infinite;
+}
+@keyframes timer-over-blink {
+  to {
+    opacity: 0.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timer-fire-text,
+  .timer-flame > span,
+  .timer-over {
+    animation: none;
+  }
+}
