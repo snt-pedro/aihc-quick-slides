@@ -62,7 +62,10 @@ export function PdfExportButton() {
         cursor: isExporting ? "not-allowed" : "pointer",
         border: "1px solid rgba(239, 68, 68, 0.2)",
       }}
-      title="Exportar apresentação para PDF (P)"
+      title={
+        "Exportar apresentação para PDF (P). Na janela de impressão, em Mais definições, " +
+        "desmarque Cabeçalhos e rodapés para não sair a URL nas páginas."
+      }
     >
       {isExporting ? (
         <>

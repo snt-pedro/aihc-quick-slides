@@ -25,6 +25,17 @@ Abra o endereço que aparece no terminal (`http://localhost:8080`).
 
 Fora da tela cheia, o rodapé mostra quem apresenta o slide e o que falar. Ele não aparece no PDF.
 
+### Exportar PDF sem URL nem data nas páginas
+
+Ao apertar **P**, abre a janela de impressão do navegador. No Chrome/Edge, abra **Mais definições** e:
+
+- desmarque **Cabeçalhos e rodapés** (senão a URL aparece no canto inferior esquerdo e a data e o
+  título no topo de cada slide);
+- marque **Gráficos de plano de fundo** (senão as cores dos cartões somem);
+- em **Destino**, escolha **Salvar como PDF**.
+
+O navegador lembra essas opções nas próximas exportações.
+
 ## Estrutura
 
 ```
