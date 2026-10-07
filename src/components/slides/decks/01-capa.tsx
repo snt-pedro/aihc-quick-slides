@@ -8,6 +8,8 @@ const LAYOUT = {
   titleGap: 36,
   /** Recuo do bloco de texto a partir do topo. */
   textTop: 20,
+  /** Deslocamento vertical do texto. Apenas o 'Pinterest'. */
+  textPinOffsetX: 0,
   /** Espaço entre a coluna de texto e a da logo. */
   columnsGap: 80,
   /** Largura relativa da coluna da logo (a de texto vale 1). */
@@ -15,9 +17,9 @@ const LAYOUT = {
   /** Tamanho máximo da logo. */
   logoSize: 1560,
   /** Deslocamento horizontal da logo: negativo = esquerda, positivo = direita. */
-  logoOffsetX: -400,
+  logoOffsetX: -420,
   /** Deslocamento vertical da logo: negativo = sobe, positivo = desce. */
-  logoOffsetY: 0,
+  logoOffsetY: 20,
 };
 
 // Preencher nome completo e matrícula de cada integrante.
@@ -48,7 +50,16 @@ export default function Capa({ index, total }: SlideProps) {
             >
               Avaliação de IHC:
               <br />
-              <span style={{ color: "var(--slide-red)" }}>Pinterest</span>
+              {/* <span style={{ color: "var(--slide-red)" }}>Pinterest</span> implementando o textPinOffsetX */}
+              <span
+                style={{
+                  color: "var(--slide-red)",
+                  display: "inline-block",
+                  transform: `translateX(${LAYOUT.textPinOffsetX}px)`,
+                }}
+              > 
+                Pinterest
+              </span>
             </h1>
           </div>
 
