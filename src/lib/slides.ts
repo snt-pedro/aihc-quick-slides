@@ -59,7 +59,7 @@ export const slides = [
     Component: Rastreamento,
     presenter: "Luis",
     notes:
-      "Tabela obrigatória: etapa, prompt e ferramenta, resumo da resposta, decisão e iterações. D0 é a classificação dos reviews herdada da desk research; P0 e P0b registram o uso do Claude Code para montar e revisar estes slides. A tabela cresce ao longo do trabalho e vira o apêndice do artigo.",
+      "Tabela obrigatória: etapa, prompt e ferramenta, resumo da resposta, decisão e iterações. D0 é a classificação dos reviews herdada da desk research; P0 e P1 registra o uso do Claude Code para montar e revisar estes slides. A tabela cresce ao longo do trabalho e vira o apêndice do artigo.",
   },
   {
     title: "Encerramento",

@@ -33,21 +33,21 @@ export const registros: Registro[] = [
   },
   {
     id: "P0",
-    etapa: "Apresentação",
-    ferramenta: "Claude Code (Opus 5.5)",
-    prompt: "Montar os slides da Entrega 1 a partir do deck de UX e do enunciado",
-    resposta:
-      "Slide de 8 páginas; cronômetro; exportação PDF; rodapé com divisão de apresentadores; resumo das páginas",
-    decisao: null,
-    iteracoes: "~15",
-  },
-  {
-    id: "P1",
     etapa: "Escopo",
     ferramenta: "Claude Code (Opus 5.5)",
     prompt: "Propor e justificar áreas-alvo do app a partir dos achados da desk research",
     resposta: "Sugestão de 4 áreas-alvo: feed principal, detalhe do pin, busca e gerenciamento de pastas",
     decisao: null,
     iteracoes: "1",
+  },
+  {
+    id: "P1",
+    etapa: "Apresentação",
+    ferramenta: "Claude Code (Opus 5.5)",
+    prompt: "Montar este slide a partir do deck de UX, da descrição do projeto e de nossas escolhas",
+    resposta:
+      "Slide de 8 páginas; cronômetro; exportação PDF; rodapé com divisão de apresentadores; resumo das páginas",
+    decisao: null,
+    iteracoes: "~15",
   },
 ];
