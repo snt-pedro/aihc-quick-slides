@@ -104,7 +104,7 @@ function SlidePage() {
   return (
     <div
       className="relative flex h-screen w-screen flex-col overflow-hidden"
-      style={{ background: "#ffffff" }}
+      style={{ background: "var(--slide-bg)" }}
     >
       <div className="relative flex-1">
         <ScaledSlide>

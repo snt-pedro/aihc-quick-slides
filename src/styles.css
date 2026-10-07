@@ -146,14 +146,15 @@
 
 /* ===== Slide deck — tema Pinterest (minimalista) ===== */
 :root {
-  --slide-bg: #ffffff;
+  /* Fundo bege "papel"; cartões, linhas e cinza de texto são tons quentes derivados dele */
+  --slide-bg: #f6f1e9;
   --slide-fg: #111111;
-  /* Mesmo vermelho de public/pinterest.png; o "soft" é ele a 8% sobre branco */
+  /* Mesmo vermelho de public/pinterest.png; o "soft" é ele a 8% sobre o fundo bege */
   --slide-red: #bd081c;
-  --slide-red-soft: #faebed;
-  --slide-muted: #767676;
-  --slide-soft: #efefef;
-  --slide-line: #e6e6e6;
+  --slide-red-soft: #f1ded9;
+  --slide-muted: #6f6a63;
+  --slide-soft: #ece4d8;
+  --slide-line: #e2d8c8;
   --slide-amber: #c27c00;
 }
 
@@ -257,13 +258,13 @@
     width: 1920px;
     min-height: auto;
     margin: 0;
-    background: #ffffff !important;
+    background: var(--slide-bg) !important;
     overflow: visible !important;
   }
 
   .print-deck {
     width: 1920px;
-    background: #ffffff;
+    background: var(--slide-bg);
   }
 
   .print-slide-wrapper {
