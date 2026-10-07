@@ -10,10 +10,10 @@ const decisaoStyle: Record<Decisao, { background: string; color: string }> = {
 // Ajustes de layout (px do slide 1920×1080).
 const LAYOUT = {
   /** Distância entre o título e a tabela. */
-  titleGap: 24,
+  titleGap: 64,
   /** Fonte e espaço interno das células: menor = linhas mais baixas. */
   cellFontSize: 20,
-  cellPadding: "12px 18px",
+  cellPadding: "52px 18px",
   /** Largura das colunas; a de "Resposta da IA" ocupa o que sobrar. */
   colWidths: { id: 80, etapa: 210, prompt: 480, decisao: 250, iteracoes: 130 },
 };
@@ -46,7 +46,7 @@ export default function Rastreamento({ index, total }: SlideProps) {
               <th style={{ padding: "0 18px 12px" }}>Etapa</th>
               <th style={{ padding: "0 18px 12px" }}>Prompt / ferramenta</th>
               <th style={{ padding: "0 18px 12px" }}>Resposta da IA (resumo)</th>
-              <th style={{ padding: "0 18px 12px" }}>Decisão</th>
+              {/* <th style={{ padding: "0 18px 12px" }}>Decisão</th> */}
               <th style={{ padding: "0 18px 12px" }}>Iterações</th>
             </tr>
           </thead>
@@ -64,7 +64,7 @@ export default function Rastreamento({ index, total }: SlideProps) {
                   </div>
                 </td>
                 <td style={{ ...cell, color: "#444" }}>{r.resposta ?? <Todo>após rodar</Todo>}</td>
-                <td style={cell}>
+                {/* <td style={cell}>
                   {r.decisao ? (
                     <div className="flex flex-col" style={{ gap: 6 }}>
                       <span
@@ -83,7 +83,7 @@ export default function Rastreamento({ index, total }: SlideProps) {
                   ) : (
                     <Todo>squad</Todo>
                   )}
-                </td>
+                </td> */}
                 <td className="slide-num" style={cell}>
                   {r.iteracoes ?? <Todo>n</Todo>}
                 </td>

@@ -43,28 +43,28 @@ export const slides = [
   {
     title: "Escopo da inspeção",
     Component: Escopo,
-    presenter: "",
+    presenter: "Júlio",
     notes:
       "Quatro áreas: feed, detalhe do pin, pastas e busca. Todas têm reclamações reais dos reviews: anúncios em sequência e disfarçados de pin, download escondido no compartilhar, assistente Gemini interrompendo, erro ao renomear pastas, busca movida para baixo e tomada por anúncios. O foco de heurísticas é hipótese, não limite. Severidade de 0 a 4. Fora do escopo: login e verificação de idade, criação de pins, mensagens e configurações.",
   },
   {
     title: "O apoio da IA no planejamento",
     Component: Ia,
-    presenter: "",
+    presenter: "Avelino",
     notes:
       "A IA rascunha, o squad decide: P1 escopo, P2 checklist, P3 ficha de registro e severidade. Limites que vigiamos: não vê o app atual, gera itens genéricos, pode inventar recursos e não define severidade. Exemplo real: na desk research, um review com 3 problemas teve só o de anúncios classificado; a releitura achou o erro ao renomear pastas, e Pastas ganhou evidência no escopo.",
   },
   {
     title: "Tabela de rastreamento",
     Component: Rastreamento,
-    presenter: "",
+    presenter: "Luis",
     notes:
       "Tabela obrigatória: etapa, prompt e ferramenta, resumo da resposta, decisão e iterações. D0 é a classificação dos reviews herdada da desk research; P0 e P0b registram o uso do Claude Code para montar e revisar estes slides. A tabela cresce ao longo do trabalho e vira o apêndice do artigo.",
   },
   {
     title: "Encerramento",
     Component: Encerramento,
-    presenter: "",
+    presenter: "Luis",
     notes: "Agradecer e abrir para perguntas.",
   },
 ];
