@@ -9,12 +9,6 @@ const uses = [
   },
   {
     id: "P2",
-    what: "Checklist",
-    ai: "Gera itens de verificação por heurística × área",
-    human: "Squad corta o genérico e testa cada item no app",
-  },
-  {
-    id: "P3",
     what: "Protocolo",
     ai: "Rascunha a ficha de registro e o guia de severidade",
     human: "Squad calibra a escala com um exemplo real",
@@ -22,7 +16,7 @@ const uses = [
 ];
 
 /** Qual cartão da esquerda corresponde ao prompt mostrado à direita. */
-const SHOWN_PROMPT = "P3";
+const SHOWN_PROMPT = "P2";
 
 // Texto literal do prompt inicial; manter igual a prompts/P3-protocolo.md.
 const prompt = {
@@ -40,14 +34,16 @@ const prompt = {
 // Ajustes de layout (px do slide 1920×1080).
 const LAYOUT = {
   /** Distância entre o título e as colunas: maior = colunas mais para baixo. */
-  titleGap: 40,
+  titleGap: 50,
   /** Espaço entre as duas colunas. */
   columnsGap: 56,
   /** Largura relativa da coluna da esquerda (a da direita vale 1). */
   leftColumn: 0.8,
+  /** Deslocamento vertical da coluna da esquerda: negativo = sobe, positivo = desce. */
+  leftColumnOffsetY: 0,
   /** Espaço interno e entre os cartões P1–P3. */
-  usePadding: "26px 32px",
-  usesGap: 18,
+  usePadding: "46px 32px",
+  usesGap: 28,
   /** Espaço interno do cartão do prompt. */
   promptPadding: "36px 44px",
   /** Tamanho do texto do prompt. */
@@ -68,7 +64,14 @@ export default function Ia({ index, total }: SlideProps) {
 
         <div className="flex flex-1" style={{ gap: LAYOUT.columnsGap }}>
           {/* onde entra */}
-          <div className="flex flex-col" style={{ flex: LAYOUT.leftColumn, gap: LAYOUT.usesGap }}>
+          <div
+            className="flex flex-col"
+            style={{
+              flex: LAYOUT.leftColumn,
+              gap: LAYOUT.usesGap,
+              marginTop: LAYOUT.leftColumnOffsetY,
+            }}
+          >
             {uses.map((u) => (
               <div
                 key={u.id}
