@@ -21,24 +21,21 @@ const uses = [
   },
 ];
 
-const limits = [
-  {
-    t: "Não vê o app",
-    d: "Conhece versões antigas; o Pinterest muda a interface com frequência",
-  },
-  {
-    t: "Checklist genérico",
-    d: "Itens que valem para qualquer app não ajudam a inspeção",
-  },
-  {
-    t: "Inventa recursos",
-    d: "Pode citar telas ou botões que não existem: tudo é conferido no app",
-  },
-  {
-    t: "Severidade é humana",
-    d: "A IA não classifica problemas nem tira conclusões por nós",
-  },
-];
+/** Qual cartão da esquerda corresponde ao prompt mostrado à direita. */
+const SHOWN_PROMPT = "P3";
+
+// Texto literal do prompt inicial; manter igual a prompts/P3-protocolo.md.
+const prompt = {
+  context:
+    "Cinco avaliadores vão inspecionar o app Pinterest para Android, cada um sozinho, usando as 10 heurísticas de Nielsen e a escala de severidade de 0 a 4 (0 não é problema, 1 cosmético, 2 pequeno, 3 grande, 4 catastrófico).",
+  lead: "Crie:",
+  items: [
+    "Uma ficha de registro de problema (campos, com uma frase explicando cada um) que permita depois juntar os achados dos 5 avaliadores sem perder quem viu o quê.",
+    "Um guia curto para aplicar a escala de severidade de forma consistente entre os avaliadores, considerando frequência, impacto e persistência do problema.",
+    "Um exemplo preenchido usando um problema hipotético, claramente marcado como hipotético.",
+  ],
+  constraint: "Não classifique problemas reais do Pinterest: isso será feito pelos avaliadores.",
+};
 
 // Ajustes de layout (px do slide 1920×1080).
 const LAYOUT = {
@@ -47,14 +44,19 @@ const LAYOUT = {
   /** Espaço entre as duas colunas. */
   columnsGap: 56,
   /** Largura relativa da coluna da esquerda (a da direita vale 1). */
-  leftColumn: 1.15,
+  leftColumn: 0.8,
   /** Espaço interno e entre os cartões P1–P3. */
   usePadding: "26px 32px",
   usesGap: 18,
-  /** Espaço interno e entre os cartões de limites. */
-  limitPadding: "24px 28px",
-  limitsGap: 16,
+  /** Espaço interno do cartão do prompt. */
+  promptPadding: "36px 44px",
+  /** Tamanho do texto do prompt. */
+  promptFontSize: 23,
+  /** Espaço vertical entre os blocos do prompt. */
+  promptGap: 22,
 };
+
+const promptText = { fontSize: LAYOUT.promptFontSize, lineHeight: 1.4 } as const;
 
 export default function Ia({ index, total }: SlideProps) {
   return (
@@ -71,7 +73,12 @@ export default function Ia({ index, total }: SlideProps) {
               <div
                 key={u.id}
                 className="slide-pin grid items-center"
-                style={{ gridTemplateColumns: "96px 1fr", padding: LAYOUT.usePadding, gap: 24 }}
+                style={{
+                  gridTemplateColumns: "96px 1fr",
+                  padding: LAYOUT.usePadding,
+                  gap: 24,
+                  boxShadow: u.id === SHOWN_PROMPT ? "inset 0 0 0 3px var(--slide-fg)" : undefined,
+                }}
               >
                 <span
                   className="slide-chip slide-chip-red"
@@ -88,36 +95,63 @@ export default function Ia({ index, total }: SlideProps) {
             ))}
           </div>
 
-          {/* limites */}
+          {/* prompt inicial */}
           <div className="flex flex-col" style={{ flex: 1, gap: 18 }}>
             <span className="slide-kicker" style={{ color: "var(--slide-muted)" }}>
-              Limites que vigiamos
+              Prompt inicial · {SHOWN_PROMPT} Protocolo
             </span>
-            <div className="grid grid-cols-2" style={{ gap: LAYOUT.limitsGap }}>
-              {limits.map((l) => (
-                <div
-                  key={l.t}
-                  className="slide-pin-outline flex flex-col"
-                  style={{ padding: LAYOUT.limitPadding, gap: 6 }}
-                >
-                  <span className="slide-body" style={{ fontWeight: 700 }}>
-                    {l.t}
-                  </span>
-                  <span className="slide-caption" style={{ color: "#444", fontSize: 22 }}>
-                    {l.d}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <div className="flex flex-col" style={{ gap: 6, marginTop: 8 }}>
-              <span className="slide-kicker" style={{ color: "var(--slide-red)" }}>
-                Na prática · desk research
-              </span>
-              <span className="slide-caption" style={{ fontSize: 22 }}>
-                Um review relatava 3 problemas: anúncios na busca, filtro de IA que não funciona e{" "}
-                <b>erro ao renomear pastas</b>. A classificação registrou só os anúncios; uma
-                releitura dos comentários completos achou o erro e levou Pastas para o escopo.
-              </span>
+            <div
+              className="flex flex-col"
+              style={{
+                padding: LAYOUT.promptPadding,
+                gap: LAYOUT.promptGap,
+                borderRadius: 32,
+                borderBottomLeftRadius: 8,
+                background: "var(--slide-fg)",
+                color: "var(--slide-bg)",
+              }}
+            >
+              <p className="m-0" style={promptText}>
+                {prompt.context}
+              </p>
+
+              <div className="flex flex-col" style={{ gap: 14 }}>
+                <span style={{ ...promptText, fontWeight: 700 }}>{prompt.lead}</span>
+                <ol className="m-0 flex list-none flex-col p-0" style={{ gap: 12 }}>
+                  {prompt.items.map((item, i) => (
+                    <li key={i} className="flex" style={{ gap: 16 }}>
+                      <span
+                        className="slide-num flex shrink-0 items-center justify-center"
+                        style={{
+                          width: 34,
+                          height: 34,
+                          marginTop: 1,
+                          borderRadius: 999,
+                          background: "var(--slide-red)",
+                          color: "#fff",
+                          fontSize: 18,
+                          fontWeight: 700,
+                        }}
+                      >
+                        {i + 1}
+                      </span>
+                      <span style={promptText}>{item}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              <p
+                className="m-0"
+                style={{
+                  ...promptText,
+                  fontWeight: 600,
+                  paddingTop: LAYOUT.promptGap,
+                  borderTop: "1px solid rgba(246, 241, 233, 0.2)",
+                }}
+              >
+                {prompt.constraint}
+              </p>
             </div>
           </div>
         </div>
