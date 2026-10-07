@@ -148,8 +148,9 @@
 :root {
   --slide-bg: #ffffff;
   --slide-fg: #111111;
-  --slide-red: #e60023;
-  --slide-red-soft: #fdebee;
+  /* Mesmo vermelho de public/pinterest.png; o "soft" é ele a 8% sobre branco */
+  --slide-red: #bd081c;
+  --slide-red-soft: #faebed;
   --slide-muted: #767676;
   --slide-soft: #efefef;
   --slide-line: #e6e6e6;
