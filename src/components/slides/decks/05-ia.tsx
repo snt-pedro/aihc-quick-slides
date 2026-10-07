@@ -40,7 +40,7 @@ const LAYOUT = {
   /** Largura relativa da coluna da esquerda (a da direita vale 1). */
   leftColumn: 0.8,
   /** Deslocamento vertical da coluna da esquerda: negativo = sobe, positivo = desce. */
-  leftColumnOffsetY: 0,
+  leftColumnOffsetY: 128,
   /** Espaço interno e entre os cartões P1–P3. */
   usePadding: "46px 32px",
   usesGap: 28,
