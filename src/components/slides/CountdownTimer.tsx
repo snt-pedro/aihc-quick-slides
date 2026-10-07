@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState, type CSSProperties } from "react";
 // Ajustes do cronômetro.
 const TIMER = {
   /** Duração da apresentação, em minutos. */
-  durationMin: 1,
+  durationMin: 0.1,
   /**
    * Tempo extra depois de zerar, em minutos: o cronômetro conta negativo (-00:01, -00:02…)
    * com o fogo aceso. Ao fim dele, fica parado no limite piscando. 0 = sem tempo extra.
@@ -87,47 +87,51 @@ export function CountdownTimer({ className }: { className?: string }) {
 
   const title = `Aperte R para reiniciar (${formatSeconds(TIMER.durationMin * 60)})`;
 
-  // Tempo normal
-  if (remaining > 0) {
-    const warning = remaining <= TIMER.warningSec * 1000;
-    return (
-      <button
-        onClick={reset}
-        title={title}
-        className={className}
-        style={{ color: warning ? "var(--slide-amber)" : undefined }}
-      >
-        {formatSeconds(Math.ceil(remaining / 1000))}
-      </button>
-    );
-  }
-
+  // A caixa do botão é sempre só o "mm:ss"; o "-" e a chama ficam por fora (posição absoluta),
+  // então o cronômetro e o número da página não se mexem ao trocar de fase.
   const over = -remaining;
+  const phase = remaining > 0 ? "normal" : over < OVERTIME_MS ? "fire" : "over";
 
-  // Tempo extra: contagem negativa queimando; a chama cresce até o limite
-  if (over < OVERTIME_MS) {
-    const heat = over / OVERTIME_MS;
-    return (
-      <button
-        onClick={reset}
-        title={`${title} · tempo extra até -${formatSeconds(TIMER.overtimeMin * 60)}`}
-        className={`${className ?? ""} timer-fire${motionClass}`}
-        style={{ "--heat": heat } as CSSProperties}
-      >
-        <span className="timer-fire-text">-{formatSeconds(Math.floor(over / 1000))}</span>
+  const digits =
+    phase === "normal"
+      ? formatSeconds(Math.ceil(remaining / 1000))
+      : phase === "fire"
+        ? formatSeconds(Math.floor(over / 1000))
+        : formatSeconds(TIMER.overtimeMin * 60);
+
+  const phaseClass = phase === "fire" ? " timer-fire" : phase === "over" ? " timer-over" : "";
+  const warning = phase === "normal" && remaining <= TIMER.warningSec * 1000;
+
+  return (
+    <button
+      onClick={reset}
+      title={
+        phase === "fire"
+          ? `${title} · tempo extra até -${formatSeconds(TIMER.overtimeMin * 60)}`
+          : title
+      }
+      className={`${className ?? ""} timer${phaseClass}${phase === "normal" ? "" : motionClass}`}
+      style={
+        {
+          color: warning ? "var(--slide-amber)" : undefined,
+          "--heat": phase === "fire" ? over / OVERTIME_MS : undefined,
+        } as CSSProperties
+      }
+    >
+      {phase !== "normal" && (
+        <span className="timer-sign" aria-hidden>
+          -
+        </span>
+      )}
+      <span className="timer-digits">{digits}</span>
+      {/* chama: tempo extra queimando, cresce até o limite */}
+      {phase === "fire" && (
         <span className="timer-flame" aria-hidden>
           <span />
           <span />
           <span />
         </span>
-      </button>
-    );
-  }
-
-  // Limite estourado: parado no máximo, piscando
-  return (
-    <button onClick={reset} title={title} className={`${className ?? ""} timer-over${motionClass}`}>
-      -{formatSeconds(TIMER.overtimeMin * 60)}
+      )}
     </button>
   );
 }

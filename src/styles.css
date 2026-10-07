@@ -338,15 +338,20 @@
 }
 
 /* ===== Cronômetro: tempo extra pegando fogo ===== */
-.timer-fire {
-  display: inline-flex;
-  align-items: flex-end;
-  gap: 8px;
-  font-weight: 800;
+/* A caixa do botão tem sempre a largura do "mm:ss", com o mesmo peso de fonte em todas as fases;
+   o "-" fica colado à esquerda e a chama à direita, fora da caixa, para nada se mexer. */
+.timer {
+  position: relative;
+}
+.timer-sign {
+  position: absolute;
+  right: 100%;
+  top: 0;
 }
 
 /* Número com as cores do fogo subindo */
-.timer-fire-text {
+.timer-fire .timer-sign,
+.timer-fire .timer-digits {
   background-image: linear-gradient(
     to top,
     var(--slide-red) 0%,
@@ -368,8 +373,9 @@
 /* Chama: três línguas em gota (vermelha, laranja, amarela) tremulando em ritmos diferentes.
    --heat (0 → 1) vem do componente e faz a chama crescer até o limite do tempo extra. */
 .timer-flame {
-  position: relative;
-  display: inline-block;
+  position: absolute;
+  left: calc(100% + 8px);
+  bottom: 0;
   width: 18px;
   height: 24px;
   transform: scale(calc(0.8 + var(--heat, 0) * 0.6));
@@ -440,7 +446,6 @@
 /* Limite do tempo extra estourado: parado e piscando */
 .timer-over {
   color: var(--slide-red);
-  font-weight: 800;
   animation: timer-over-blink 1s steps(2, jump-none) infinite;
 }
 @keyframes timer-over-blink {
@@ -451,7 +456,8 @@
 
 /* Só vale com TIMER.respectReducedMotion = true (classe timer-respect-motion) */
 @media (prefers-reduced-motion: reduce) {
-  .timer-respect-motion .timer-fire-text,
+  .timer-respect-motion .timer-sign,
+  .timer-respect-motion .timer-digits,
   .timer-respect-motion .timer-flame > span,
   .timer-over.timer-respect-motion {
     animation: none;
