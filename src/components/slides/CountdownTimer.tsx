@@ -3,15 +3,23 @@ import { useCallback, useEffect, useState, type CSSProperties } from "react";
 // Ajustes do cronômetro.
 const TIMER = {
   /** Duração da apresentação, em minutos. */
-  durationMin: 10,
+  durationMin: 1,
   /**
    * Tempo extra depois de zerar, em minutos: o cronômetro conta negativo (-00:01, -00:02…)
    * com o fogo aceso. Ao fim dele, fica parado no limite piscando. 0 = sem tempo extra.
    */
-  overtimeMin: 2,
+  overtimeMin: 1,
   /** Segundos finais do tempo normal em que o número fica amarelo. */
   warningSec: 60,
+  /**
+   * true = desliga o tremular do fogo e o piscar quando o sistema pede menos movimento
+   * (no Windows: Acessibilidade › Efeitos visuais › Efeitos de animação desligado).
+   * false = anima sempre.
+   */
+  respectReducedMotion: false,
 };
+
+const motionClass = TIMER.respectReducedMotion ? " timer-respect-motion" : "";
 
 const TIMER_KEY = "slide-timer-deadline";
 const DURATION_MS = TIMER.durationMin * 60 * 1000;
@@ -103,22 +111,22 @@ export function CountdownTimer({ className }: { className?: string }) {
       <button
         onClick={reset}
         title={`${title} · tempo extra até -${formatSeconds(TIMER.overtimeMin * 60)}`}
-        className={`${className ?? ""} timer-fire`}
+        className={`${className ?? ""} timer-fire${motionClass}`}
         style={{ "--heat": heat } as CSSProperties}
       >
+        <span className="timer-fire-text">-{formatSeconds(Math.floor(over / 1000))}</span>
         <span className="timer-flame" aria-hidden>
           <span />
           <span />
           <span />
         </span>
-        <span className="timer-fire-text">-{formatSeconds(Math.floor(over / 1000))}</span>
       </button>
     );
   }
 
   // Limite estourado: parado no máximo, piscando
   return (
-    <button onClick={reset} title={title} className={`${className ?? ""} timer-over`}>
+    <button onClick={reset} title={title} className={`${className ?? ""} timer-over${motionClass}`}>
       -{formatSeconds(TIMER.overtimeMin * 60)}
     </button>
   );

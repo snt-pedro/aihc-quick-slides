@@ -449,10 +449,11 @@
   }
 }
 
+/* Só vale com TIMER.respectReducedMotion = true (classe timer-respect-motion) */
 @media (prefers-reduced-motion: reduce) {
-  .timer-fire-text,
-  .timer-flame > span,
-  .timer-over {
+  .timer-respect-motion .timer-fire-text,
+  .timer-respect-motion .timer-flame > span,
+  .timer-over.timer-respect-motion {
     animation: none;
   }
 }
