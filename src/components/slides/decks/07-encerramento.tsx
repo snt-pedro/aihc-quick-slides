@@ -11,9 +11,9 @@ const LAYOUT = {
    * O pingo original da fonte tem 0.19; acima de ~0.25 o "P" da logo fica legível.
    * A logo cresce para cima a partir da linha de base e a haste encurta junto.
    */
-  dotSize: 0.32,
+  dotSize: 0.24,
   /** Vão entre a haste e a logo, em fração do tamanho da fonte. */
-  dotGap: 0.06,
+  dotGap: 0.04,
   /** Espaço extra antes do "!" para a logo não encostar no "o", em fração do tamanho da fonte. */
   bangMarginLeft: 0.06,
 };

@@ -13,9 +13,9 @@ const LAYOUT = {
   /** Largura relativa da coluna da logo (a de texto vale 1). */
   logoColumn: 0.45,
   /** Tamanho máximo da logo. */
-  logoSize: 1260,
+  logoSize: 1560,
   /** Deslocamento horizontal da logo: negativo = esquerda, positivo = direita. */
-  logoOffsetX: -200,
+  logoOffsetX: -400,
   /** Deslocamento vertical da logo: negativo = sobe, positivo = desce. */
   logoOffsetY: 0,
 };
