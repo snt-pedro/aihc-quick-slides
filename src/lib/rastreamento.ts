@@ -23,8 +23,10 @@ export const registros: Registro[] = [
     id: "D0",
     etapa: "Desk research (UX)",
     ferramenta: null,
-    prompt: "Classificar os 30 reviews 1–2★ por categoria de UX e heurística (analise_ux/criterio.md)",
-    resposta: "13 ocorrências em 13 reviews; de um review com 3 problemas, registrou só o de anúncios",
+    prompt:
+      "Classificar os 30 reviews 1–2★ por categoria de UX e heurística (analise_ux/criterio.md)",
+    resposta:
+      "13 ocorrências em 13 reviews; de um review com 3 problemas, registrou só o de anúncios",
     decisao: "Editado",
     porque: "Erro ao renomear pastas entrou como evidência",
     iteracoes: null,

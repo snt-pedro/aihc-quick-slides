@@ -9,7 +9,8 @@ const TIMER_DURATION_MS = 10 * 60 * 1000;
 // documento foi de fato recarregado.
 if (typeof window !== "undefined") {
   const nav = performance.getEntriesByType("navigation")[0] as
-    PerformanceNavigationTiming | undefined;
+    | PerformanceNavigationTiming
+    | undefined;
   if (nav?.type === "reload") sessionStorage.removeItem(TIMER_KEY);
 }
 

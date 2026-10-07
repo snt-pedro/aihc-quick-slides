@@ -3,14 +3,37 @@ import { SlideLayout, type SlideProps } from "../SlideLayout";
 
 const stages = [
   { when: "Começo (2009)", name: "Tote", note: "App de compras da Cold Brew Labs" },
-  { when: "Março de 2010", name: "Pinterest", note: "10 mil usuários depois de 9 meses", highlight: true },
+  {
+    when: "Março de 2010",
+    name: "Pinterest",
+    note: "10 mil usuários depois de 9 meses",
+    highlight: true,
+  },
   { when: "Hoje", name: "Pinterest, Inc.", note: "NYSE: PINS · 500 mi+ usuários/mês" },
 ];
 
 const founders = [
-  { name: "Ben Silbermann", initials: "BS", photo: "/founders/ben-silbermann.webp", position: "30% 30%", zoom: 1.3 },
-  { name: "Paul Sciarra", initials: "PS", photo: "/founders/paul-sciarra.webp", position: "47% 40%", zoom: 1.1 },
-  { name: "Evan Sharp", initials: "ES", photo: "/founders/evan-sharp.webp", position: "30% 0%", zoom: 1.6 },
+  {
+    name: "Ben Silbermann",
+    initials: "BS",
+    photo: "/founders/ben-silbermann.webp",
+    position: "30% 30%",
+    zoom: 1.3,
+  },
+  {
+    name: "Paul Sciarra",
+    initials: "PS",
+    photo: "/founders/paul-sciarra.webp",
+    position: "47% 40%",
+    zoom: 1.1,
+  },
+  {
+    name: "Evan Sharp",
+    initials: "ES",
+    photo: "/founders/evan-sharp.webp",
+    position: "30% 0%",
+    zoom: 1.6,
+  },
 ];
 
 // Ajustes de layout (px do slide 1920×1080).
@@ -34,7 +57,10 @@ export default function Historia({ index, total }: SlideProps) {
         <div className="flex items-stretch" style={{ gap: 20 }}>
           {stages.map((s, i) => (
             <Fragment key={s.name}>
-              <div className="slide-pin flex flex-1 flex-col" style={{ padding: LAYOUT.stagePadding, gap: 14 }}>
+              <div
+                className="slide-pin flex flex-1 flex-col"
+                style={{ padding: LAYOUT.stagePadding, gap: 14 }}
+              >
                 <span className="slide-kicker" style={{ color: "var(--slide-muted)" }}>
                   {s.when}
                 </span>
@@ -79,7 +105,10 @@ export default function Historia({ index, total }: SlideProps) {
                   background: "var(--slide-soft)",
                 }}
               >
-                <span className="slide-subtitle" style={{ fontWeight: 700, color: "var(--slide-muted)" }}>
+                <span
+                  className="slide-subtitle"
+                  style={{ fontWeight: 700, color: "var(--slide-muted)" }}
+                >
                   {f.initials}
                 </span>
                 {/* alt vazio: o nome já aparece abaixo; se a foto faltar, as iniciais ficam visíveis */}

@@ -86,7 +86,8 @@ function SlidePage() {
 
   if (isPrint) {
     const filename = new URLSearchParams(window.location.search).get("filename");
-    document.title = filename?.replace(/\.pdf$/i, "") || "Avaliação Heurística do Pinterest - Impressão";
+    document.title =
+      filename?.replace(/\.pdf$/i, "") || "Avaliação Heurística do Pinterest - Impressão";
     return (
       <div className="print-deck">
         {slides.map(({ Component }, index) => (
@@ -101,7 +102,10 @@ function SlidePage() {
   const Slide = slide.Component;
 
   return (
-    <div className="relative flex h-screen w-screen flex-col overflow-hidden" style={{ background: "#ffffff" }}>
+    <div
+      className="relative flex h-screen w-screen flex-col overflow-hidden"
+      style={{ background: "#ffffff" }}
+    >
       <div className="relative flex-1">
         <ScaledSlide>
           <Slide index={i} total={total} />
@@ -126,8 +130,14 @@ function SlidePage() {
       )}
 
       {/* Indicador de progresso de exportação */}
-      <div className="absolute bottom-6 left-6 right-6 h-1 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.1)", display: "none" }}>
-        <div className="h-full bg-red-500 transition-all duration-300" style={{ width: "0%" }}></div>
+      <div
+        className="absolute bottom-6 left-6 right-6 h-1 rounded-full overflow-hidden"
+        style={{ background: "rgba(0,0,0,0.1)", display: "none" }}
+      >
+        <div
+          className="h-full bg-red-500 transition-all duration-300"
+          style={{ width: "0%" }}
+        ></div>
       </div>
     </div>
   );

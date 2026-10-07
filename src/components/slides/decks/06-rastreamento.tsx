@@ -18,7 +18,11 @@ const LAYOUT = {
   colWidths: { id: 80, etapa: 210, prompt: 480, decisao: 250, iteracoes: 130 },
 };
 
-const cell = { fontSize: LAYOUT.cellFontSize, lineHeight: 1.3, padding: LAYOUT.cellPadding } as const;
+const cell = {
+  fontSize: LAYOUT.cellFontSize,
+  lineHeight: 1.3,
+  padding: LAYOUT.cellPadding,
+} as const;
 
 export default function Rastreamento({ index, total }: SlideProps) {
   const w = LAYOUT.colWidths;
@@ -65,7 +69,12 @@ export default function Rastreamento({ index, total }: SlideProps) {
                     <div className="flex flex-col" style={{ gap: 6 }}>
                       <span
                         className="slide-chip"
-                        style={{ ...decisaoStyle[r.decisao], fontSize: 17, padding: "6px 14px", alignSelf: "flex-start" }}
+                        style={{
+                          ...decisaoStyle[r.decisao],
+                          fontSize: 17,
+                          padding: "6px 14px",
+                          alignSelf: "flex-start",
+                        }}
                       >
                         {r.decisao}
                       </span>

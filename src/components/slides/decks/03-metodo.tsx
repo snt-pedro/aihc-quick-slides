@@ -3,7 +3,12 @@ import { SlideLayout, SlideTitle, type SlideProps } from "../SlideLayout";
 
 // Atividades da avaliação heurística (Barbosa & Silva, 2010)
 const steps = [
-  { name: "Preparação", d: "Escopo, heurísticas, avaliadores, severidade", when: "Entrega 1", now: true },
+  {
+    name: "Preparação",
+    d: "Escopo, heurísticas, avaliadores, severidade",
+    when: "Entrega 1",
+    now: true,
+  },
   { name: "Coleta", d: "Cada avaliador inspeciona sozinho", when: "Entrega 2" },
   { name: "Interpretação", d: "Problema → heurística + severidade", when: "Entrega 2" },
   { name: "Consolidação", d: "Junta e revisa os achados do squad", when: "Entrega 2" },
@@ -51,7 +56,10 @@ export default function Metodo({ index, total }: SlideProps) {
           <SlideTitle>Avaliação heurística</SlideTitle>
           <span className="slide-body-lg" style={{ color: "#444" }}>
             Inspeção sem a presença de usuários{" "}
-            <span style={{ color: "var(--slide-muted)" }}>(Nielsen, 1994; Barbosa &amp; Silva, 2010)</span>.
+            <span style={{ color: "var(--slide-muted)" }}>
+              (Nielsen, 1994; Barbosa &amp; Silva, 2010)
+            </span>
+            .
           </span>
         </div>
 
@@ -87,7 +95,10 @@ export default function Metodo({ index, total }: SlideProps) {
                     </span>
                     <span
                       className="slide-kicker"
-                      style={{ fontSize: 16, color: s.now ? "var(--slide-red)" : "var(--slide-muted)" }}
+                      style={{
+                        fontSize: 16,
+                        color: s.now ? "var(--slide-red)" : "var(--slide-muted)",
+                      }}
                     >
                       {s.when}
                     </span>
@@ -130,7 +141,10 @@ export default function Metodo({ index, total }: SlideProps) {
                 className="slide-pin flex flex-col justify-center"
                 style={{ padding: LAYOUT.heuristicPadding, gap: 2 }}
               >
-                <span className="slide-num" style={{ fontSize: 22, fontWeight: 800, color: "var(--slide-red)" }}>
+                <span
+                  className="slide-num"
+                  style={{ fontSize: 22, fontWeight: 800, color: "var(--slide-red)" }}
+                >
                   {h.id}
                 </span>
                 <span className="slide-caption" style={{ fontWeight: 600 }}>

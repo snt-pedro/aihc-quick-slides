@@ -18,7 +18,12 @@ function waitForImages(document: Document): Promise<void> {
 }
 
 export async function exportSlidesToPdf(options: ExportOptions = {}): Promise<void> {
-  const { filename = "Avaliacao-Heuristica-Pinterest-Entrega-1.pdf", onProgress, onComplete, onError } = options;
+  const {
+    filename = "Avaliacao-Heuristica-Pinterest-Entrega-1.pdf",
+    onProgress,
+    onComplete,
+    onError,
+  } = options;
   let printWindow: Window | null = null;
 
   try {

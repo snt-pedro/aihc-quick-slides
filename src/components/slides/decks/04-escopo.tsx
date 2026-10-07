@@ -66,7 +66,10 @@ export default function Escopo({ index, total }: SlideProps) {
       <div className="flex flex-1 flex-col" style={{ gap: LAYOUT.titleGap }}>
         <SlideTitle>Quatro áreas-alvo</SlideTitle>
 
-        <div className="grid grid-cols-4" style={{ gap: LAYOUT.cardsGap, height: LAYOUT.cardHeight }}>
+        <div
+          className="grid grid-cols-4"
+          style={{ gap: LAYOUT.cardsGap, height: LAYOUT.cardHeight }}
+        >
           {areas.map((a) => (
             <div
               key={a.name}
@@ -75,11 +78,19 @@ export default function Escopo({ index, total }: SlideProps) {
             >
               <span
                 className="slide-display slide-num"
-                style={{ fontSize: LAYOUT.numberSize, fontWeight: 800, lineHeight: 1, color: "var(--slide-red)" }}
+                style={{
+                  fontSize: LAYOUT.numberSize,
+                  fontWeight: 800,
+                  lineHeight: 1,
+                  color: "var(--slide-red)",
+                }}
               >
                 {a.n}
               </span>
-              <span className="slide-subtitle" style={{ fontWeight: 700, fontSize: LAYOUT.nameSize }}>
+              <span
+                className="slide-subtitle"
+                style={{ fontWeight: 700, fontSize: LAYOUT.nameSize }}
+              >
                 {a.name}
               </span>
               <span className="slide-caption" style={{ color: "#444" }}>
@@ -87,13 +98,20 @@ export default function Escopo({ index, total }: SlideProps) {
               </span>
               <div className="flex flex-col" style={{ gap: 10, marginTop: "auto" }}>
                 {a.evidence.map((q) => (
-                  <span key={q} className="slide-caption" style={{ fontStyle: "italic", fontSize: LAYOUT.quoteSize, color: "var(--slide-fg)" }}>
+                  <span
+                    key={q}
+                    className="slide-caption"
+                    style={{
+                      fontStyle: "italic",
+                      fontSize: LAYOUT.quoteSize,
+                      color: "var(--slide-fg)",
+                    }}
+                  >
                     {q}
                   </span>
                 ))}
               </div>
-              <div className="flex" style={{ gap: 8 }}>
-              </div>
+              <div className="flex" style={{ gap: 8 }}></div>
             </div>
           ))}
         </div>

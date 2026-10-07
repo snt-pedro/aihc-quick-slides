@@ -73,7 +73,10 @@ export default function Ia({ index, total }: SlideProps) {
                 className="slide-pin grid items-center"
                 style={{ gridTemplateColumns: "96px 1fr", padding: LAYOUT.usePadding, gap: 24 }}
               >
-                <span className="slide-chip slide-chip-red" style={{ textAlign: "center", padding: "14px 0" }}>
+                <span
+                  className="slide-chip slide-chip-red"
+                  style={{ textAlign: "center", padding: "14px 0" }}
+                >
                   {u.id}
                 </span>
                 <div className="flex flex-col" style={{ gap: 6 }}>
@@ -92,7 +95,11 @@ export default function Ia({ index, total }: SlideProps) {
             </span>
             <div className="grid grid-cols-2" style={{ gap: LAYOUT.limitsGap }}>
               {limits.map((l) => (
-                <div key={l.t} className="slide-pin-outline flex flex-col" style={{ padding: LAYOUT.limitPadding, gap: 6 }}>
+                <div
+                  key={l.t}
+                  className="slide-pin-outline flex flex-col"
+                  style={{ padding: LAYOUT.limitPadding, gap: 6 }}
+                >
                   <span className="slide-body" style={{ fontWeight: 700 }}>
                     {l.t}
                   </span>
@@ -108,8 +115,8 @@ export default function Ia({ index, total }: SlideProps) {
               </span>
               <span className="slide-caption" style={{ fontSize: 22 }}>
                 Um review relatava 3 problemas: anúncios na busca, filtro de IA que não funciona e{" "}
-                <b>erro ao renomear pastas</b>. A classificação registrou só os anúncios; uma releitura
-                dos comentários completos achou o erro e levou Pastas para o escopo.
+                <b>erro ao renomear pastas</b>. A classificação registrou só os anúncios; uma
+                releitura dos comentários completos achou o erro e levou Pastas para o escopo.
               </span>
             </div>
           </div>

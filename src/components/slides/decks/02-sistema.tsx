@@ -48,12 +48,19 @@ export default function Sistema({ index, total }: SlideProps) {
           Pinterest: <span style={{ color: "var(--slide-red)" }}>catalogação</span> em pastas
         </SlideTitle>
 
-        <div className="flex flex-1" style={{ gap: LAYOUT.columnsGap, marginTop: LAYOUT.columnsOffsetY }}>
+        <div
+          className="flex flex-1"
+          style={{ gap: LAYOUT.columnsGap, marginTop: LAYOUT.columnsOffsetY }}
+        >
           {/* o que é */}
           <div className="flex flex-col" style={{ flex: LAYOUT.leftColumn, gap: 28 }}>
             <div className="flex flex-col" style={{ gap: LAYOUT.conceptsGap }}>
               {concepts.map((c) => (
-                <div key={c.term} className="slide-pin flex flex-col" style={{ padding: LAYOUT.conceptPadding, gap: 6 }}>
+                <div
+                  key={c.term}
+                  className="slide-pin flex flex-col"
+                  style={{ padding: LAYOUT.conceptPadding, gap: 6 }}
+                >
                   <span className="slide-body" style={{ fontWeight: 700 }}>
                     {c.term}
                   </span>

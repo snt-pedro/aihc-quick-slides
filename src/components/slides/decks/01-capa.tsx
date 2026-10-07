@@ -29,14 +29,22 @@ export default function Capa({ index, total }: SlideProps) {
   return (
     <SlideLayout index={index} total={total} bare>
       <div className="flex flex-1 items-stretch justify-between" style={{ gap: LAYOUT.columnsGap }}>
-        <div className="flex flex-1 flex-col justify-between" style={{ paddingTop: LAYOUT.textTop }}>
+        <div
+          className="flex flex-1 flex-col justify-between"
+          style={{ paddingTop: LAYOUT.textTop }}
+        >
           <div className="flex flex-col" style={{ gap: LAYOUT.titleGap }}>
             <span className="slide-kicker" style={{ color: "var(--slide-muted)" }}>
               Avaliação de IHC com apoio de IA
             </span>
             <h1
               className="slide-display slide-title-lg"
-              style={{ fontWeight: 800, fontSize: LAYOUT.titleSize, lineHeight: 1.02, whiteSpace: "nowrap" }}
+              style={{
+                fontWeight: 800,
+                fontSize: LAYOUT.titleSize,
+                lineHeight: 1.02,
+                whiteSpace: "nowrap",
+              }}
             >
               Avaliação de IHC:
               <br />
