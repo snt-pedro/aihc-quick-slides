@@ -29,6 +29,10 @@ O cronômetro do cabeçalho tem duração e tempo extra configuráveis em `TIMER
 `src/components/slides/CountdownTimer.tsx`. Quando o tempo acaba, ele conta negativo com uma chama
 acesa até o limite extra e, depois disso, fica parado piscando.
 
+A transição entre slides (deslizar, esmaecer ou nenhuma) e a duração ficam em `TRANSITION`, no topo
+de `src/routes/slides.$index.tsx`. Ela funciona no Chrome e no Edge; em outros navegadores o slide
+troca sem animação.
+
 ### Exportar PDF sem URL nem data nas páginas
 
 Ao apertar **P**, abre a janela de impressão do navegador. No Chrome/Edge, abra **Mais definições** e:

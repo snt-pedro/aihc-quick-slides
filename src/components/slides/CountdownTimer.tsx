@@ -115,6 +115,8 @@ export function CountdownTimer({ className }: { className?: string }) {
         {
           color: warning ? "var(--slide-amber)" : undefined,
           "--heat": phase === "fire" ? over / OVERTIME_MS : undefined,
+          // fica parado enquanto o slide troca (ver transição em styles.css)
+          viewTransitionName: "slide-timer",
         } as CSSProperties
       }
     >

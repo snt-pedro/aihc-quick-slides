@@ -6,6 +6,14 @@ import { PresenterNotes } from "@/components/slides/PresenterNotes";
 import { slides } from "@/lib/slides";
 import { exportSlidesToPdf } from "@/lib/pdf-exporter";
 
+// Transição entre slides (View Transitions do Chrome/Edge; outros navegadores trocam sem animação).
+const TRANSITION = {
+  /** "slide" = desliza para o lado conforme a direção · "fade" = esmaece · "none" = sem transição. */
+  type: "slide" as "slide" | "fade" | "none",
+  /** Duração, em milissegundos. */
+  durationMs: 450,
+};
+
 export const Route = createFileRoute("/slides/$index")({
   head: ({ params }) => {
     const i = Math.max(1, Math.min(slides.length, parseInt(params.index, 10) || 1));
@@ -38,10 +46,23 @@ function SlidePage() {
     setIsPrint(new URLSearchParams(window.location.search).get("print") === "true");
   }, []);
 
+  useEffect(() => {
+    const root = document.documentElement;
+    root.dataset.slideTransition = TRANSITION.type;
+    root.style.setProperty("--slide-transition-ms", `${TRANSITION.durationMs}ms`);
+  }, []);
+
   const go = useCallback(
     (next: number) => {
       const target = Math.max(1, Math.min(total, next));
-      if (target !== i) navigate({ to: "/slides/$index", params: { index: String(target) } });
+      if (target === i) return;
+      // a direção decide para que lado o slide desliza (ver styles.css)
+      document.documentElement.dataset.slideDir = target > i ? "forward" : "back";
+      navigate({
+        to: "/slides/$index",
+        params: { index: String(target) },
+        viewTransition: TRANSITION.type !== "none",
+      });
     },
     [i, total, navigate],
   );
@@ -106,7 +127,7 @@ function SlidePage() {
       className="relative flex h-screen w-screen flex-col overflow-hidden"
       style={{ background: "var(--slide-bg)" }}
     >
-      <div className="relative flex-1">
+      <div className="relative flex-1" style={{ viewTransitionName: "slide" }}>
         <ScaledSlide>
           <Slide index={i} total={total} />
         </ScaledSlide>

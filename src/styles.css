@@ -337,6 +337,60 @@
   border-top-color: transparent;
 }
 
+/* ===== Transição entre slides =====
+   Tipo e duração vêm de TRANSITION em src/routes/slides.$index.tsx (data-slide-transition e
+   --slide-transition-ms no <html>); data-slide-dir diz se avançou ou voltou. */
+::view-transition-group(*),
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: var(--slide-transition-ms, 450ms);
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* o cronômetro não se move nem pisca durante a troca */
+::view-transition-old(slide-timer) {
+  display: none;
+}
+::view-transition-new(slide-timer) {
+  animation: none;
+}
+
+html[data-slide-transition="slide"][data-slide-dir="forward"]::view-transition-old(slide) {
+  animation-name: slide-out-left;
+}
+html[data-slide-transition="slide"][data-slide-dir="forward"]::view-transition-new(slide) {
+  animation-name: slide-in-right;
+}
+html[data-slide-transition="slide"][data-slide-dir="back"]::view-transition-old(slide) {
+  animation-name: slide-out-right;
+}
+html[data-slide-transition="slide"][data-slide-dir="back"]::view-transition-new(slide) {
+  animation-name: slide-in-left;
+}
+@keyframes slide-out-left {
+  to {
+    transform: translateX(-12%);
+    opacity: 0;
+  }
+}
+@keyframes slide-out-right {
+  to {
+    transform: translateX(12%);
+    opacity: 0;
+  }
+}
+@keyframes slide-in-right {
+  from {
+    transform: translateX(12%);
+    opacity: 0;
+  }
+}
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-12%);
+    opacity: 0;
+  }
+}
+
 /* ===== Cronômetro: tempo extra pegando fogo ===== */
 /* A caixa do botão tem sempre a largura do "mm:ss", com o mesmo peso de fonte em todas as fases;
    o "-" fica colado à esquerda e a chama à direita, fora da caixa, para nada se mexer. */
