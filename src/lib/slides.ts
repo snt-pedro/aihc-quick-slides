@@ -52,7 +52,7 @@ export const slides = [
     Component: Ia,
     presenter: "Avelino",
     notes:
-      "A IA rascunha, o squad decide: P1 escopo, P2 checklist, P3 ficha de registro e severidade. À direita, o prompt inicial do P3 como foi enviado: o contexto (5 avaliadores, 10 heurísticas, escala de 0 a 4), os três pedidos (ficha, guia de severidade e exemplo hipotético) e a restrição de não classificar problemas reais, porque a severidade é decisão dos avaliadores.",
+      "A IA rascunha, o squad decide: P1 escopo, P2 ficha de registro e severidade. À direita, o prompt inicial do P2 como será enviado: o contexto (5 avaliadores, 10 heurísticas, escala de 0 a 4), os três pedidos (ficha, guia de severidade e exemplo hipotético) e a restrição de não classificar problemas reais, porque a severidade é decisão dos avaliadores.",
   },
   {
     title: "Tabela de rastreamento",
