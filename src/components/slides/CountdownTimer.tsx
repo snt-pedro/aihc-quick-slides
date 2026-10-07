@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState, type CSSProperties } from "react";
 // Ajustes do cronômetro.
 const TIMER = {
   /** Duração da apresentação, em minutos. */
-  durationMin: 0.1,
+  durationMin: 10,
   /**
    * Tempo extra depois de zerar, em minutos: o cronômetro conta negativo (-00:01, -00:02…)
    * com o fogo aceso. Ao fim dele, fica parado no limite piscando. 0 = sem tempo extra.
