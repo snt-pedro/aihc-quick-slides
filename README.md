@@ -29,12 +29,9 @@ Fora da tela cheia, o rodapé mostra quem apresenta o slide e o que falar. Ele n
 
 Ao apertar **P**, abre a janela de impressão do navegador. No Chrome/Edge, abra **Mais definições** e:
 
-- desmarque **Cabeçalhos e rodapés** (senão a URL aparece no canto inferior esquerdo e a data e o
-  título no topo de cada slide);
-- marque **Gráficos de plano de fundo** (senão as cores dos cartões somem);
-- em **Destino**, escolha **Salvar como PDF**.
+- mais configurações -> desmarque **Cabeçalhos e rodapés** (senão a URL aparece no canto inferior esquerdo de cada slide)
 
-O navegador lembra essas opções nas próximas exportações.
+O navegador lembra essa opção nas próximas exportações.
 
 ## Estrutura
 
